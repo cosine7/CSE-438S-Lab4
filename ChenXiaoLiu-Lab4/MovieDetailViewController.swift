@@ -25,4 +25,13 @@ class MovieDetailViewController: UIViewController {
         score.text = "\(item.vote_average) / 10"
         overview.text = item.overview == "" ? "Sorry, no overview for this movie" : item.overview
     }
+    
+    @IBAction func watchTrailerButtonClicked(_ sender: Any) {
+        guard let navController = self.navigationController,
+              let videoViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "VideoViewController") as? VideoViewController
+        else {
+            return
+        }
+        navController.pushViewController(videoViewController, animated: true)
+    }
 }

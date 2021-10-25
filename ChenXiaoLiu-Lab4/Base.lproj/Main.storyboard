@@ -154,6 +154,9 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="192" height="38"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                 <state key="normal" title="Watch Trailer"/>
+                                                                <connections>
+                                                                    <action selector="watchTrailerButtonClicked:" destination="bWs-De-s1j" eventType="touchUpInside" id="qyc-H9-hwe"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="maB-TF-XZ7">
                                                                 <rect key="frame" x="192" y="0.0" width="192" height="38"/>
@@ -216,14 +219,17 @@
         <!--Video-->
         <scene sceneID="1g1-yI-QBW">
             <objects>
-                <viewController id="43c-23-hLf" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoViewController" id="43c-23-hLf" customClass="VideoViewController" customModule="ChenXiaoLiu_Lab4" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j0x-bu-yIs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owo-HR-Eay">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owo-HR-Eay" customClass="YTPlayerView">
                                 <rect key="frame" x="0.0" y="88" width="414" height="215"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="250" constant="215" id="cMy-MF-y6x"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="c3a-0Y-4x6"/>
@@ -232,10 +238,12 @@
                             <constraint firstItem="owo-HR-Eay" firstAttribute="top" secondItem="c3a-0Y-4x6" secondAttribute="top" id="4qW-RS-Ek5"/>
                             <constraint firstItem="owo-HR-Eay" firstAttribute="leading" secondItem="c3a-0Y-4x6" secondAttribute="leading" id="Ieq-cJ-gob"/>
                             <constraint firstItem="c3a-0Y-4x6" firstAttribute="trailing" secondItem="owo-HR-Eay" secondAttribute="trailing" id="htt-wo-nKw"/>
-                            <constraint firstItem="c3a-0Y-4x6" firstAttribute="bottom" secondItem="owo-HR-Eay" secondAttribute="bottom" constant="510" id="xeC-kO-kOr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Video" id="NBs-ZA-16R"/>
+                    <connections>
+                        <outlet property="playerView" destination="owo-HR-Eay" id="pP3-6v-46A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Apd-Lg-K9M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

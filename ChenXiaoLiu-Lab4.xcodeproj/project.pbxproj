@@ -18,11 +18,29 @@
 		502180862724EE200044ECFF /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502180842724EE200044ECFF /* CollectionViewCell.swift */; };
 		502180892724F29E0044ECFF /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 502180852724EE200044ECFF /* CollectionViewCell.xib */; };
 		5021808B272610090044ECFF /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5021808A272610090044ECFF /* MovieDetailViewController.swift */; };
+		50B9895B272749810041C77A /* Pods_ChenXiaoLiu_Lab4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784F9C1B66981D14C40038CA /* Pods_ChenXiaoLiu_Lab4.framework */; };
 		50D6AC232727419C005D10B3 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6AC222727419C005D10B3 /* VideoViewController.swift */; };
-		ED73EFF7BD4E2C2934F1E384 /* Pods_ChenXiaoLiu_Lab4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784F9C1B66981D14C40038CA /* Pods_ChenXiaoLiu_Lab4.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		501B305E27274C8700D19BAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 501B305927274C8700D19BAC /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 16E7EF7D57C81B529E357121B09DCE39;
+			remoteInfo = "Pods-ChenXiaoLiu-Lab4";
+		};
+		501B306027274C8700D19BAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 501B305927274C8700D19BAC /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8498A1B2C60117E181CA67921DDAE0B6;
+			remoteInfo = "youtube-ios-player-helper";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		501B305927274C8700D19BAC /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		502180612724A7820044ECFF /* ChenXiaoLiu-Lab4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ChenXiaoLiu-Lab4.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		502180642724A7820044ECFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		502180662724A7820044ECFF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,16 +65,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED73EFF7BD4E2C2934F1E384 /* Pods_ChenXiaoLiu_Lab4.framework in Frameworks */,
+				50B9895B272749810041C77A /* Pods_ChenXiaoLiu_Lab4.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		501B305A27274C8700D19BAC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				501B305F27274C8700D19BAC /* Pods-ChenXiaoLiu-Lab4 */,
+				501B306127274C8700D19BAC /* youtube-ios-player-helper */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		502180582724A7820044ECFF = {
 			isa = PBXGroup;
 			children = (
+				501B305927274C8700D19BAC /* Pods.xcodeproj */,
 				502180632724A7820044ECFF /* ChenXiaoLiu-Lab4 */,
 				502180622724A7820044ECFF /* Products */,
 				C6402E08C689C11C0792BF1B /* Pods */,
@@ -156,12 +184,37 @@
 			mainGroup = 502180582724A7820044ECFF;
 			productRefGroup = 502180622724A7820044ECFF /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 501B305A27274C8700D19BAC /* Products */;
+					ProjectRef = 501B305927274C8700D19BAC /* Pods.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				502180602724A7820044ECFF /* ChenXiaoLiu-Lab4 */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		501B305F27274C8700D19BAC /* Pods-ChenXiaoLiu-Lab4 */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			name = "Pods-ChenXiaoLiu-Lab4";
+			path = Pods_ChenXiaoLiu_Lab4.framework;
+			remoteRef = 501B305E27274C8700D19BAC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		501B306127274C8700D19BAC /* youtube-ios-player-helper */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			name = "youtube-ios-player-helper";
+			path = youtube_ios_player_helper.framework;
+			remoteRef = 501B306027274C8700D19BAC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		5021805F2724A7820044ECFF /* Resources */ = {
