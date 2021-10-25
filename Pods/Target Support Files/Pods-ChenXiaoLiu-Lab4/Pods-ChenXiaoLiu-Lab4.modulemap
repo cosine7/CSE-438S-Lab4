@@ -1,0 +1,6 @@
+framework module Pods_ChenXiaoLiu_Lab4 {
+  umbrella header "Pods-ChenXiaoLiu-Lab4-umbrella.h"
+
+  export *
+  module * { export * }
+}

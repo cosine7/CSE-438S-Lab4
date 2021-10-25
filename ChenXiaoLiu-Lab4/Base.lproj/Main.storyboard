@@ -206,11 +206,40 @@
                         <outlet property="releaseDate" destination="t8T-Ro-KZ9" id="9BI-gI-Trs"/>
                         <outlet property="score" destination="kGl-uj-orA" id="tXs-uA-yNd"/>
                         <outlet property="scrollView" destination="vXj-eV-Cng" id="e8Q-07-CBy"/>
+                        <segue destination="43c-23-hLf" kind="show" identifier="pushVideoView" id="SNG-DQ-c6d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vqN-Dk-37a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2761" y="94"/>
+        </scene>
+        <!--Video-->
+        <scene sceneID="1g1-yI-QBW">
+            <objects>
+                <viewController id="43c-23-hLf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="j0x-bu-yIs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owo-HR-Eay">
+                                <rect key="frame" x="0.0" y="88" width="414" height="215"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="c3a-0Y-4x6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="owo-HR-Eay" firstAttribute="top" secondItem="c3a-0Y-4x6" secondAttribute="top" id="4qW-RS-Ek5"/>
+                            <constraint firstItem="owo-HR-Eay" firstAttribute="leading" secondItem="c3a-0Y-4x6" secondAttribute="leading" id="Ieq-cJ-gob"/>
+                            <constraint firstItem="c3a-0Y-4x6" firstAttribute="trailing" secondItem="owo-HR-Eay" secondAttribute="trailing" id="htt-wo-nKw"/>
+                            <constraint firstItem="c3a-0Y-4x6" firstAttribute="bottom" secondItem="owo-HR-Eay" secondAttribute="bottom" constant="510" id="xeC-kO-kOr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Video" id="NBs-ZA-16R"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Apd-Lg-K9M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3700.0000000000005" y="93.75"/>
         </scene>
         <!--favorite-->
         <scene sceneID="W2E-NE-zLT">

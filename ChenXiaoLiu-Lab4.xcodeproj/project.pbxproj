@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,8 @@
 		502180862724EE200044ECFF /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502180842724EE200044ECFF /* CollectionViewCell.swift */; };
 		502180892724F29E0044ECFF /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 502180852724EE200044ECFF /* CollectionViewCell.xib */; };
 		5021808B272610090044ECFF /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5021808A272610090044ECFF /* MovieDetailViewController.swift */; };
+		50D6AC232727419C005D10B3 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6AC222727419C005D10B3 /* VideoViewController.swift */; };
+		ED73EFF7BD4E2C2934F1E384 /* Pods_ChenXiaoLiu_Lab4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784F9C1B66981D14C40038CA /* Pods_ChenXiaoLiu_Lab4.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,10 @@
 		502180842724EE200044ECFF /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		502180852724EE200044ECFF /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		5021808A272610090044ECFF /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		50D6AC222727419C005D10B3 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		784F9C1B66981D14C40038CA /* Pods_ChenXiaoLiu_Lab4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChenXiaoLiu_Lab4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B76E33663D5A1C104E218D8 /* Pods-ChenXiaoLiu-Lab4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChenXiaoLiu-Lab4.release.xcconfig"; path = "Target Support Files/Pods-ChenXiaoLiu-Lab4/Pods-ChenXiaoLiu-Lab4.release.xcconfig"; sourceTree = "<group>"; };
+		9DF9AA7BA0AE5D70A162284F /* Pods-ChenXiaoLiu-Lab4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChenXiaoLiu-Lab4.debug.xcconfig"; path = "Target Support Files/Pods-ChenXiaoLiu-Lab4/Pods-ChenXiaoLiu-Lab4.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED73EFF7BD4E2C2934F1E384 /* Pods_ChenXiaoLiu_Lab4.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +59,8 @@
 			children = (
 				502180632724A7820044ECFF /* ChenXiaoLiu-Lab4 */,
 				502180622724A7820044ECFF /* Products */,
+				C6402E08C689C11C0792BF1B /* Pods */,
+				A0B8F2887333AAD87DEBF302 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,8 +87,26 @@
 				502180842724EE200044ECFF /* CollectionViewCell.swift */,
 				502180852724EE200044ECFF /* CollectionViewCell.xib */,
 				5021808A272610090044ECFF /* MovieDetailViewController.swift */,
+				50D6AC222727419C005D10B3 /* VideoViewController.swift */,
 			);
 			path = "ChenXiaoLiu-Lab4";
+			sourceTree = "<group>";
+		};
+		A0B8F2887333AAD87DEBF302 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				784F9C1B66981D14C40038CA /* Pods_ChenXiaoLiu_Lab4.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C6402E08C689C11C0792BF1B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9DF9AA7BA0AE5D70A162284F /* Pods-ChenXiaoLiu-Lab4.debug.xcconfig */,
+				7B76E33663D5A1C104E218D8 /* Pods-ChenXiaoLiu-Lab4.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -89,9 +116,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 502180752724A7830044ECFF /* Build configuration list for PBXNativeTarget "ChenXiaoLiu-Lab4" */;
 			buildPhases = (
+				338E1FFF3FBCCF7106D67C3A /* [CP] Check Pods Manifest.lock */,
 				5021805D2724A7820044ECFF /* Sources */,
 				5021805E2724A7820044ECFF /* Frameworks */,
 				5021805F2724A7820044ECFF /* Resources */,
+				7EDE303F08CAD868DFB10286 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -148,6 +177,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		338E1FFF3FBCCF7106D67C3A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ChenXiaoLiu-Lab4-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7EDE303F08CAD868DFB10286 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ChenXiaoLiu-Lab4/Pods-ChenXiaoLiu-Lab4-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ChenXiaoLiu-Lab4/Pods-ChenXiaoLiu-Lab4-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChenXiaoLiu-Lab4/Pods-ChenXiaoLiu-Lab4-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5021805D2724A7820044ECFF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -155,6 +226,7 @@
 			files = (
 				502180692724A7820044ECFF /* ViewController.swift in Sources */,
 				502180652724A7820044ECFF /* AppDelegate.swift in Sources */,
+				50D6AC232727419C005D10B3 /* VideoViewController.swift in Sources */,
 				502180862724EE200044ECFF /* CollectionViewCell.swift in Sources */,
 				502180672724A7820044ECFF /* SceneDelegate.swift in Sources */,
 				5021808B272610090044ECFF /* MovieDetailViewController.swift in Sources */,
@@ -303,6 +375,7 @@
 		};
 		502180762724A7830044ECFF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9DF9AA7BA0AE5D70A162284F /* Pods-ChenXiaoLiu-Lab4.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -321,6 +394,7 @@
 		};
 		502180772724A7830044ECFF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B76E33663D5A1C104E218D8 /* Pods-ChenXiaoLiu-Lab4.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
