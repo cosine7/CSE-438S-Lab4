@@ -24,12 +24,22 @@ class ViewController: UIViewController, UISearchBarDelegate, UICollectionViewDat
     
     // Learned from https://www.youtube.com/watch?v=iH67DkBx9Jc
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // Learned from https://www.youtube.com/watch?v=FIXU6d370K8
         self.spinner.startAnimating()
         self.collectionView.alpha = 0.4
         guard let query = self.searchBar.text else { return }
         DispatchQueue.global().async {
-            // Learned from https://www.youtube.com/watch?v=FIXU6d370K8
-            guard let url = URL(string: "https://api.themoviedb.org/3/search/movie?page=2&include_adult=false&api_key=c4d21179571e64f8f5980962ac98eeb7&query=\(query)"),
+            // Learned from https://www.swiftbysundell.com/articles/constructing-urls-in-swift/
+            var request = URLComponents()
+            request.scheme = "https"
+            request.host = "api.themoviedb.org"
+            request.path = "/3/search/movie"
+            request.queryItems = [
+                URLQueryItem(name: "page", value: "1"),
+                URLQueryItem(name: "api_key", value: "c4d21179571e64f8f5980962ac98eeb7"),
+                URLQueryItem(name: "query", value: query)
+            ]
+            guard let url = request.url,
                   let data = try? Data(contentsOf: url),
                   let decodedData = try? JSONDecoder().decode(APIResults.self, from: data)
             else {
@@ -64,16 +74,33 @@ class ViewController: UIViewController, UISearchBarDelegate, UICollectionViewDat
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let result = apiResults,
+              let navController = self.navigationController,
+              let movieDetailViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController
+        else {
+            return
+        }
+        movieDetailViewController.poster = posterCache[indexPath.item]
+        movieDetailViewController.movie = result.results[indexPath.item]
+        navController.pushViewController(movieDetailViewController, animated: true)
+    }
+    
     private func cachePosters() {
-        guard let result = apiResults else { return }
+        guard let result = apiResults,
+              let posterNotAvailable = UIImage(named: "noImage")
+        else {
+            return
+        }
         posterCache.removeAll()
+        
         for movie in result.results {
             guard let posterPath = movie.poster_path,
-                  let url = URL(string: "https://image.tmdb.org/t/p/w500" + posterPath),
+                  let url = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)"),
                   let data = try? Data(contentsOf: url),
                   let image = UIImage(data: data)
             else {
-                posterCache.append(UIImage())
+                posterCache.append(posterNotAvailable)
                 continue
             }
             posterCache.append(image)

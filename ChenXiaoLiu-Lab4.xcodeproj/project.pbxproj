@@ -17,6 +17,7 @@
 		5021807B2724BA880044ECFF /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5021807A2724BA880044ECFF /* Movie.swift */; };
 		502180862724EE200044ECFF /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502180842724EE200044ECFF /* CollectionViewCell.swift */; };
 		502180892724F29E0044ECFF /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 502180852724EE200044ECFF /* CollectionViewCell.xib */; };
+		5021808B272610090044ECFF /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5021808A272610090044ECFF /* MovieDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		5021807A2724BA880044ECFF /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		502180842724EE200044ECFF /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		502180852724EE200044ECFF /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		5021808A272610090044ECFF /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				5021807A2724BA880044ECFF /* Movie.swift */,
 				502180842724EE200044ECFF /* CollectionViewCell.swift */,
 				502180852724EE200044ECFF /* CollectionViewCell.xib */,
+				5021808A272610090044ECFF /* MovieDetailViewController.swift */,
 			);
 			path = "ChenXiaoLiu-Lab4";
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 				502180652724A7820044ECFF /* AppDelegate.swift in Sources */,
 				502180862724EE200044ECFF /* CollectionViewCell.swift in Sources */,
 				502180672724A7820044ECFF /* SceneDelegate.swift in Sources */,
+				5021808B272610090044ECFF /* MovieDetailViewController.swift in Sources */,
 				502180792724BA640044ECFF /* APIResults.swift in Sources */,
 				5021807B2724BA880044ECFF /* Movie.swift in Sources */,
 			);
