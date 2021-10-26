@@ -27,11 +27,25 @@ class MovieDetailViewController: UIViewController {
     }
     
     @IBAction func watchTrailerButtonClicked(_ sender: Any) {
-        guard let navController = self.navigationController,
+        guard let item = movie,
+              let navController = self.navigationController,
               let videoViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "VideoViewController") as? VideoViewController
         else {
             return
         }
+        videoViewController.movieId = item.id
         navController.pushViewController(videoViewController, animated: true)
+    }
+    
+    @IBAction func addToFavoriteButtonPressed(_ sender: Any) {
+        // Learned from https://stackoverflow.com/questions/28240848/how-to-save-an-array-of-objects-to-nsuserdefault-with-swift
+        guard let item = movie else { return }
+        if var movies = Utility.getFromUserDefaultsFavoriteMovies() {
+            movies.append(item)
+            Utility.saveToUserDefaultsFavorite(movies: movies, self)
+        }
+        else {
+            Utility.saveToUserDefaultsFavorite(movies: [item], self)
+        }
     }
 }

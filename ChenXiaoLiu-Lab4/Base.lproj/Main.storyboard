@@ -44,7 +44,7 @@
                                 </cells>
                             </collectionView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" id="VUQ-XM-deO">
-                                <rect key="frame" x="0.0" y="111" width="414" height="674"/>
+                                <rect key="frame" x="169.43148848871533" y="410.81446062229315" width="75.000000000000455" height="74.999999999999901"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
@@ -71,7 +71,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1839.1304347826087" y="93.75"/>
+            <point key="canvasLocation" x="1680" y="94"/>
         </scene>
         <!--Detail-->
         <scene sceneID="Fvk-y4-WJ0">
@@ -162,6 +162,9 @@
                                                                 <rect key="frame" x="192" y="0.0" width="192" height="38"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                                 <state key="normal" title="Add to Favorite"/>
+                                                                <connections>
+                                                                    <action selector="addToFavoriteButtonPressed:" destination="bWs-De-s1j" eventType="touchUpInside" id="RDL-xP-fVS"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -214,7 +217,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vqN-Dk-37a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2761" y="94"/>
+            <point key="canvasLocation" x="2448" y="94"/>
         </scene>
         <!--Video-->
         <scene sceneID="1g1-yI-QBW">
@@ -224,46 +227,76 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owo-HR-Eay" customClass="YTPlayerView">
-                                <rect key="frame" x="0.0" y="88" width="414" height="215"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jrM-IG-exa">
+                                <rect key="frame" x="0.0" y="88" width="414" height="250"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" priority="250" constant="215" id="cMy-MF-y6x"/>
+                                    <constraint firstAttribute="height" priority="250" constant="250" id="UnY-s4-QOf"/>
                                 </constraints>
-                            </view>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ZCn-f8-8eL">
+                                <rect key="frame" x="169.5" y="413" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="hty-wt-fe2"/>
+                                    <constraint firstAttribute="height" constant="75" id="syx-9E-dZp"/>
+                                </constraints>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="c3a-0Y-4x6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="owo-HR-Eay" firstAttribute="top" secondItem="c3a-0Y-4x6" secondAttribute="top" id="4qW-RS-Ek5"/>
-                            <constraint firstItem="owo-HR-Eay" firstAttribute="leading" secondItem="c3a-0Y-4x6" secondAttribute="leading" id="Ieq-cJ-gob"/>
-                            <constraint firstItem="c3a-0Y-4x6" firstAttribute="trailing" secondItem="owo-HR-Eay" secondAttribute="trailing" id="htt-wo-nKw"/>
+                            <constraint firstItem="c3a-0Y-4x6" firstAttribute="trailing" secondItem="jrM-IG-exa" secondAttribute="trailing" id="A80-n1-0J9"/>
+                            <constraint firstItem="jrM-IG-exa" firstAttribute="leading" secondItem="c3a-0Y-4x6" secondAttribute="leading" id="AOR-X5-ntU"/>
+                            <constraint firstItem="ZCn-f8-8eL" firstAttribute="centerX" secondItem="c3a-0Y-4x6" secondAttribute="centerX" id="a9J-is-2cq"/>
+                            <constraint firstItem="jrM-IG-exa" firstAttribute="top" secondItem="c3a-0Y-4x6" secondAttribute="top" id="osJ-Ir-kr8"/>
+                            <constraint firstItem="ZCn-f8-8eL" firstAttribute="centerY" secondItem="c3a-0Y-4x6" secondAttribute="centerY" id="rfL-lh-6B1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Video" id="NBs-ZA-16R"/>
                     <connections>
-                        <outlet property="playerView" destination="owo-HR-Eay" id="pP3-6v-46A"/>
+                        <outlet property="spinner" destination="ZCn-f8-8eL" id="rNl-cu-27h"/>
+                        <outlet property="videoView" destination="jrM-IG-exa" id="gSQ-ph-2dZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Apd-Lg-K9M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3700.0000000000005" y="93.75"/>
+            <point key="canvasLocation" x="3233" y="94"/>
         </scene>
-        <!--favorite-->
+        <!--Favorites-->
         <scene sceneID="W2E-NE-zLT">
             <objects>
-                <viewController storyboardIdentifier="FavoriteViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h0O-ul-XjN" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavoriteViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h0O-ul-XjN" customClass="FavoritesViewController" customModule="ChenXiaoLiu_Lab4" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I3e-5d-nuB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Fa-Py-UyI">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="RoC-sq-qr5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RoC-sq-qr5" firstAttribute="bottom" secondItem="5Fa-Py-UyI" secondAttribute="bottom" id="8YI-ah-ya0"/>
+                            <constraint firstItem="5Fa-Py-UyI" firstAttribute="leading" secondItem="RoC-sq-qr5" secondAttribute="leading" id="Gfo-FN-hey"/>
+                            <constraint firstItem="RoC-sq-qr5" firstAttribute="trailing" secondItem="5Fa-Py-UyI" secondAttribute="trailing" id="x7M-34-udE"/>
+                            <constraint firstItem="5Fa-Py-UyI" firstAttribute="top" secondItem="RoC-sq-qr5" secondAttribute="top" id="yRp-o1-7Sh"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="favorite" image="favorite" id="JaY-gY-dRC"/>
+                    <navigationItem key="navigationItem" title="Favorites" id="rAK-6w-3vm"/>
+                    <connections>
+                        <outlet property="tableView" destination="5Fa-Py-UyI" id="YSm-0B-liI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="caq-iM-Lpn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="19" y="796"/>
+            <point key="canvasLocation" x="928.98550724637687" y="795.53571428571422"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="B1M-r9-50W">
@@ -277,7 +310,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="JvW-5b-zAC" kind="relationship" relationship="viewControllers" id="eju-ri-rhn"/>
-                        <segue destination="h0O-ul-XjN" kind="relationship" relationship="viewControllers" id="oQj-5F-9FL"/>
+                        <segue destination="egQ-rW-lsN" kind="relationship" relationship="viewControllers" id="oQj-5F-9FL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WAy-vl-VXA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -302,6 +335,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GUG-3b-3Qv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="93.75"/>
+        </scene>
+        <!--favorite-->
+        <scene sceneID="7bJ-JU-5EA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="egQ-rW-lsN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="favorite" image="favorite" id="JaY-gY-dRC"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MHV-kV-2z5">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="h0O-ul-XjN" kind="relationship" relationship="rootViewController" id="imd-lH-RYe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tY4-XF-46u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="795.53571428571422"/>
         </scene>
     </scenes>
     <resources>

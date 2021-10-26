@@ -47,6 +47,7 @@ class ViewController: UIViewController, UISearchBarDelegate, UICollectionViewDat
             }
             self.apiResults = decodedData
             self.cachePosters()
+
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
                 self.spinner.stopAnimating()
