@@ -11,15 +11,17 @@ class ViewController: UIViewController, UISearchBarDelegate, UICollectionViewDat
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var collectionView: UICollectionView!
-    var apiResults: APIResults?
-    var posterCache: [UIImage] = []
+    private var apiResults: APIResults?
+    private var posterCache: [UIImage] = []
+    private var isLoadingMovies = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(CollectionViewCell.nib(), forCellWithReuseIdentifier: CollectionViewCell.identifier)
+        spinner.center = self.view.center
     }
     
     // Learned from https://www.youtube.com/watch?v=iH67DkBx9Jc
@@ -41,12 +43,12 @@ class ViewController: UIViewController, UISearchBarDelegate, UICollectionViewDat
             ]
             guard let url = request.url,
                   let data = try? Data(contentsOf: url),
-                  let decodedData = try? JSONDecoder().decode(APIResults.self, from: data)
+                  let response = try? JSONDecoder().decode(APIResults.self, from: data)
             else {
                 return
             }
-            self.apiResults = decodedData
-            self.cachePosters()
+            self.apiResults = response
+            self.posterCache = Utility.cachePosters(response.results)
 
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -65,10 +67,11 @@ class ViewController: UIViewController, UISearchBarDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // Learned from https://www.youtube.com/watch?v=eWGu3hcL3ww
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell,
+        let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath)
+        guard let cell = collectionCell as? CollectionViewCell,
               let result = apiResults
         else {
-            return UICollectionViewCell()
+            return collectionCell
         }
         cell.label.text = result.results[indexPath.item].title
         cell.imageView.image = posterCache[indexPath.item]
@@ -76,35 +79,26 @@ class ViewController: UIViewController, UISearchBarDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let result = apiResults,
-              let navController = self.navigationController,
-              let movieDetailViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController
-        else {
-            return
-        }
-        movieDetailViewController.poster = posterCache[indexPath.item]
-        movieDetailViewController.movie = result.results[indexPath.item]
-        navController.pushViewController(movieDetailViewController, animated: true)
+        guard let result = apiResults else { return }
+        Utility.pushMovieDetailViewController(self, result.results[indexPath.item], posterCache[indexPath.item])
     }
     
-    private func cachePosters() {
-        guard let result = apiResults,
-              let posterNotAvailable = UIImage(named: "noImage")
-        else {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        print("success")
+        return collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: FooterCollectionReusableView.identifier,
+            for: indexPath
+        )
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        // Learned from https://stackoverflow.com/questions/6217900/uiscrollview-reaching-the-bottom-of-the-scroll-view
+        let bottom = scrollView.contentOffset.y + scrollView.frame.size.height
+        if bottom <= scrollView.contentSize.height {
             return
         }
-        posterCache.removeAll()
-        
-        for movie in result.results {
-            guard let posterPath = movie.poster_path,
-                  let url = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)"),
-                  let data = try? Data(contentsOf: url),
-                  let image = UIImage(data: data)
-            else {
-                posterCache.append(posterNotAvailable)
-                continue
-            }
-            posterCache.append(image)
-        }
+//        let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: FooterCollectionReusableView.identifier, for: <#T##IndexPath#>)
+//        footer.spinner.startAnimating()
     }
 }

@@ -9,13 +9,20 @@ import UIKit
 
 class FavoritesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
-    var movies: [Movie]? = Utility.getFromUserDefaultsFavoriteMovies()
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let items = movies {
-            return items.count
+    var movies: [Movie] = Utility.getFromUserDefaultsFavoriteMovies() {
+        didSet {
+            DispatchQueue.global().async {
+                self.posterCache = Utility.cachePosters(self.movies)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
         }
-        return 0
+    }
+    var posterCache: [UIImage] = []
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -23,12 +30,15 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         guard let textLabel = cell.textLabel,
               let detailLabel = cell.detailTextLabel,
-              let items = movies
+              let imageView = cell.imageView
         else {
             return cell
         }
-        textLabel.text = items[indexPath.row].title
-        detailLabel.text = items[indexPath.row].overview
+        textLabel.text = movies[indexPath.row].title
+        detailLabel.text = movies[indexPath.row].overview
+        if indexPath.row < posterCache.count {
+            imageView.image = posterCache[indexPath.row]
+        }
         return cell
     }
     
@@ -38,15 +48,14 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        guard editingStyle == .delete,
-              var items = movies
-        else {
-            return
+        if editingStyle == .delete {
+            movies.remove(at: indexPath.row)
+            Utility.saveToUserDefaultsFavorite(movies: movies, self, "Movie deleted from favroites")
         }
-        items.remove(at: indexPath.row)
-        movies = items
-        Utility.saveToUserDefaultsFavorite(movies: items, self, "Movie deleted from favroites")
-        tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        Utility.pushMovieDetailViewController(self, movies[indexPath.row], posterCache[indexPath.row])
     }
 
     override func viewDidLoad() {
@@ -58,6 +67,5 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewWillAppear(_ animated: Bool) {
         movies = Utility.getFromUserDefaultsFavoriteMovies()
-        tableView.reloadData()
     }
 }
