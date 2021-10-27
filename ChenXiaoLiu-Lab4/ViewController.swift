@@ -11,10 +11,14 @@ class ViewController: UIViewController, UISearchBarDelegate, UICollectionViewDat
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var collectionView: UICollectionView!
-    private var apiResults: APIResults?
+    
+    private let bottomSpinner = UIActivityIndicatorView()
     private var posterCache: [UIImage] = []
     private var isLoadingMovies = false
-    
+    private var movies: [Movie] = []
+    private var currentPage = 0
+    private var totalPage = 0
+    private var query = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,36 +26,33 @@ class ViewController: UIViewController, UISearchBarDelegate, UICollectionViewDat
         collectionView.dataSource = self
         collectionView.delegate = self
         spinner.center = self.view.center
+        bottomSpinner.hidesWhenStopped = true
+        bottomSpinner.frame = CGRect(x: 0, y: 0, width: collectionView.bounds.width, height: 50)
+        bottomSpinner.color = .black
     }
     
     // Learned from https://www.youtube.com/watch?v=iH67DkBx9Jc
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // Learned from https://www.youtube.com/watch?v=FIXU6d370K8
-        self.spinner.startAnimating()
-        self.collectionView.alpha = 0.4
-        guard let query = self.searchBar.text else { return }
+        guard let queryItem = searchBar.text else { return }
+        spinner.startAnimating()
+        collectionView.alpha = 0.4
+        query = queryItem
         DispatchQueue.global().async {
-            // Learned from https://www.swiftbysundell.com/articles/constructing-urls-in-swift/
-            var request = URLComponents()
-            request.scheme = "https"
-            request.host = "api.themoviedb.org"
-            request.path = "/3/search/movie"
-            request.queryItems = [
-                URLQueryItem(name: "page", value: "1"),
-                URLQueryItem(name: "api_key", value: "c4d21179571e64f8f5980962ac98eeb7"),
-                URLQueryItem(name: "query", value: query)
-            ]
-            guard let url = request.url,
-                  let data = try? Data(contentsOf: url),
-                  let response = try? JSONDecoder().decode(APIResults.self, from: data)
-            else {
-                return
+            self.currentPage = 1
+            Utility.fetchMovieData(self.currentPage, self.query) { result in
+                switch result {
+                case .success(let apiResult):
+                    self.movies = apiResult.results
+                    self.posterCache = Utility.cachePosters(apiResult.results)
+                    self.totalPage = apiResult.total_pages
+                case .failure(_):
+                    break
+                }
             }
-            self.apiResults = response
-            self.posterCache = Utility.cachePosters(response.results)
-
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
+                self.collectionView.setContentOffset(.zero, animated: true)
                 self.spinner.stopAnimating()
                 self.collectionView.alpha = 1
             }
@@ -59,46 +60,66 @@ class ViewController: UIViewController, UISearchBarDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let result = apiResults {
-            return result.results.count
-        }
-        return 0
+        return movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // Learned from https://www.youtube.com/watch?v=eWGu3hcL3ww
         let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath)
-        guard let cell = collectionCell as? CollectionViewCell,
-              let result = apiResults
+        guard let cell = collectionCell as? CollectionViewCell
         else {
             return collectionCell
         }
-        cell.label.text = result.results[indexPath.item].title
+        cell.label.text = movies[indexPath.item].title
         cell.imageView.image = posterCache[indexPath.item]
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let result = apiResults else { return }
-        Utility.pushMovieDetailViewController(self, result.results[indexPath.item], posterCache[indexPath.item])
+        Utility.pushMovieDetailViewController(self, movies[indexPath.item], posterCache[indexPath.item])
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        print("success")
-        return collectionView.dequeueReusableSupplementaryView(
+        if kind != UICollectionView.elementKindSectionFooter {
+            return UICollectionReusableView()
+        }
+        let footer = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
-            withReuseIdentifier: FooterCollectionReusableView.identifier,
+            withReuseIdentifier: "footer",
             for: indexPath
         )
+        footer.addSubview(bottomSpinner)
+        return footer
     }
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // Learned from https://stackoverflow.com/questions/6217900/uiscrollview-reaching-the-bottom-of-the-scroll-view
         let bottom = scrollView.contentOffset.y + scrollView.frame.size.height
-        if bottom <= scrollView.contentSize.height {
+        guard currentPage < totalPage,
+              bottom > scrollView.contentSize.height,
+              !isLoadingMovies
+        else {
             return
         }
-//        let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: FooterCollectionReusableView.identifier, for: <#T##IndexPath#>)
-//        footer.spinner.startAnimating()
+        isLoadingMovies = true
+        bottomSpinner.startAnimating()
+        DispatchQueue.global().async {
+            self.currentPage += 1
+            Utility.fetchMovieData(self.currentPage, self.query) {
+                result in
+                switch result {
+                case .success(let apiResults):
+                    self.movies.append(contentsOf: apiResults.results)
+                    self.posterCache.append(contentsOf: Utility.cachePosters(apiResults.results))
+                case .failure(_):
+                    break
+                }
+            }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                self.bottomSpinner.stopAnimating()
+                self.isLoadingMovies = false
+            }
+        }
     }
 }

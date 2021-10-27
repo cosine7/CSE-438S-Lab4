@@ -26,8 +26,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         guard let textLabel = cell.textLabel,
               let detailLabel = cell.detailTextLabel,
               let imageView = cell.imageView
@@ -62,10 +61,11 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        movies = Utility.getFromUserDefaultsFavoriteMovies()
+        DispatchQueue.global().async {
+            self.movies = Utility.getFromUserDefaultsFavoriteMovies()
+        }
     }
 }
