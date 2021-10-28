@@ -38,10 +38,11 @@ class MovieDetailViewController: UIViewController {
     }
     
     @IBAction func addToFavoriteButtonPressed(_ sender: Any) {
-        // Learned from https://stackoverflow.com/questions/28240848/how-to-save-an-array-of-objects-to-nsuserdefault-with-swift
+//        // Learned from https://stackoverflow.com/questions/28240848/how-to-save-an-array-of-objects-to-nsuserdefault-with-swift
         guard let item = movie else { return }
-        var movies = Utility.getFromUserDefaultsFavoriteMovies()
-        movies.append(item)
-        Utility.saveToUserDefaultsFavorite(movies: movies, self)
+        Utility.addToFavorite(item, self)
+//        var movies = Utility.getFromUserDefaultsFavoriteMovies()
+//        movies.append(item)
+//        Utility.saveToUserDefaultsFavorite(movies: movies, self)
     }
 }

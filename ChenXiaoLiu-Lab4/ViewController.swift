@@ -92,6 +92,23 @@ class ViewController: UIViewController, UISearchBarDelegate, UICollectionViewDat
         return footer
     }
     
+    // Learned from https://www.youtube.com/watch?v=a1Agazw2JxM
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+            let addTofavorite = UIAction(
+                title: "Add To Favorites",
+                image: UIImage(named: "favorite")
+            ) { _ in
+                Utility.addToFavorite(self.movies[indexPath.item], self)
+            }
+            return UIMenu(
+                title: self.movies[indexPath.item].title,
+                children: [addTofavorite]
+            )
+        }
+        return configuration
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // Learned from https://stackoverflow.com/questions/6217900/uiscrollview-reaching-the-bottom-of-the-scroll-view
         let bottom = scrollView.contentOffset.y + scrollView.frame.size.height

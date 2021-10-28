@@ -64,6 +64,7 @@ class Utility {
     }
     
     static func saveToUserDefaultsFavorite(movies: [Movie], _ viewController: UIViewController, _ message: String = "Movie added to favroites") {
+        // Learned from https://stackoverflow.com/questions/28240848/how-to-save-an-array-of-objects-to-nsuserdefault-with-swift
         guard let moviesData = try? JSONEncoder().encode(movies)
         else {
             return
@@ -79,6 +80,16 @@ class Utility {
             return []
         }
         return movies
+    }
+    
+    static func addToFavorite(_ movie: Movie, _ viewController: UIViewController) {
+        var movies = getFromUserDefaultsFavoriteMovies()
+        if movies.contains(where: { $0.id == movie.id }) {
+            showMessage(viewController, "Sorry", "This Movie is already added to favorite")
+        } else {
+            movies.append(movie)
+            saveToUserDefaultsFavorite(movies: movies, viewController)
+        }
     }
     
     static func showMessage(_ viewController: UIViewController, _ title: String, _ content: String, _ handler: ((UIAlertAction) -> Void)? = nil) {
