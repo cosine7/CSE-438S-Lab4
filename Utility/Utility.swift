@@ -8,29 +8,7 @@
 import Foundation
 import UIKit
 
-class Utility {
-    // Learned from https://www.hackingwithswift.com/articles/161/how-to-use-result-in-swift
-    static func fetchMovieData(_ page: Int, _ query: String, _ completion: @escaping (Result<APIResults, FetchingError>) -> Void) {
-        // Learned from https://www.swiftbysundell.com/articles/constructing-urls-in-swift/
-        var request = URLComponents()
-        request.scheme = "https"
-        request.host = "api.themoviedb.org"
-        request.path = "/3/search/movie"
-        request.queryItems = [
-            URLQueryItem(name: "page", value: "\(page)"),
-            URLQueryItem(name: "api_key", value: "c4d21179571e64f8f5980962ac98eeb7"),
-            URLQueryItem(name: "query", value: query)
-        ]
-        guard let url = request.url,
-              let data = try? Data(contentsOf: url),
-              let response = try? JSONDecoder().decode(APIResults.self, from: data)
-        else {
-            completion(.failure(.unKnownError))
-            return
-        }
-        completion(.success(response))
-    }
-    
+class Utility {    
     static func cachePosters( _ movies: [Movie]) -> [UIImage] {
         guard let posterNotAvailable = UIImage(named: "noImage")
         else {

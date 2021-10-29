@@ -22,6 +22,9 @@
 		50CDC72E272774D60031E7A4 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDC72D272774D60031E7A4 /* FavoritesViewController.swift */; };
 		50CDC7322727816C0031E7A4 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDC7312727816C0031E7A4 /* Utility.swift */; };
 		50CDC73E2729E0460031E7A4 /* FetchingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDC73D2729E0460031E7A4 /* FetchingError.swift */; };
+		50CDC742272A4FE00031E7A4 /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDC741272A4FE00031E7A4 /* TrendingViewController.swift */; };
+		50CDC744272A52900031E7A4 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDC743272A52900031E7A4 /* HeaderCollectionReusableView.swift */; };
+		50CDC746272B51260031E7A4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDC745272B51260031E7A4 /* API.swift */; };
 		50D6AC232727419C005D10B3 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6AC222727419C005D10B3 /* VideoViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +46,9 @@
 		50CDC72D272774D60031E7A4 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		50CDC7312727816C0031E7A4 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		50CDC73D2729E0460031E7A4 /* FetchingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingError.swift; sourceTree = "<group>"; };
+		50CDC741272A4FE00031E7A4 /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
+		50CDC743272A52900031E7A4 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		50CDC745272B51260031E7A4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		50D6AC222727419C005D10B3 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +95,7 @@
 				5021808A272610090044ECFF /* MovieDetailViewController.swift */,
 				50D6AC222727419C005D10B3 /* VideoViewController.swift */,
 				50CDC72D272774D60031E7A4 /* FavoritesViewController.swift */,
+				50CDC741272A4FE00031E7A4 /* TrendingViewController.swift */,
 			);
 			path = "ChenXiaoLiu-Lab4";
 			sourceTree = "<group>";
@@ -109,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				50CDC7312727816C0031E7A4 /* Utility.swift */,
+				50CDC745272B51260031E7A4 /* API.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -117,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				502180842724EE200044ECFF /* CollectionViewCell.swift */,
+				50CDC743272A52900031E7A4 /* HeaderCollectionReusableView.swift */,
 			);
 			path = CollectionViewComponents;
 			sourceTree = "<group>";
@@ -198,11 +207,14 @@
 				502180862724EE200044ECFF /* CollectionViewCell.swift in Sources */,
 				502180672724A7820044ECFF /* SceneDelegate.swift in Sources */,
 				50CDC72E272774D60031E7A4 /* FavoritesViewController.swift in Sources */,
+				50CDC742272A4FE00031E7A4 /* TrendingViewController.swift in Sources */,
 				5021808B272610090044ECFF /* MovieDetailViewController.swift in Sources */,
 				50CDC7322727816C0031E7A4 /* Utility.swift in Sources */,
 				502180792724BA640044ECFF /* APIResults.swift in Sources */,
 				5021807B2724BA880044ECFF /* Movie.swift in Sources */,
 				50CDC72B27275B970031E7A4 /* Video.swift in Sources */,
+				50CDC744272A52900031E7A4 /* HeaderCollectionReusableView.swift in Sources */,
+				50CDC746272B51260031E7A4 /* API.swift in Sources */,
 				50CDC73E2729E0460031E7A4 /* FetchingError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

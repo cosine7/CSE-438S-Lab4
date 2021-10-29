@@ -40,7 +40,7 @@ class ViewController: UIViewController, UISearchBarDelegate, UICollectionViewDat
         query = queryItem
         DispatchQueue.global().async {
             self.currentPage = 1
-            Utility.fetchMovieData(self.currentPage, self.query) { result in
+            API.GET(API.getSearchRequest(self.currentPage, self.query)) { result in
                 switch result {
                 case .success(let apiResult):
                     self.movies = apiResult.results
@@ -122,7 +122,7 @@ class ViewController: UIViewController, UISearchBarDelegate, UICollectionViewDat
         bottomSpinner.startAnimating()
         DispatchQueue.global().async {
             self.currentPage += 1
-            Utility.fetchMovieData(self.currentPage, self.query) {
+            API.GET(API.getSearchRequest(self.currentPage, self.query)) {
                 result in
                 switch result {
                 case .success(let apiResults):

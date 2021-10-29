@@ -41,8 +41,5 @@ class MovieDetailViewController: UIViewController {
 //        // Learned from https://stackoverflow.com/questions/28240848/how-to-save-an-array-of-objects-to-nsuserdefault-with-swift
         guard let item = movie else { return }
         Utility.addToFavorite(item, self)
-//        var movies = Utility.getFromUserDefaultsFavoriteMovies()
-//        movies.append(item)
-//        Utility.saveToUserDefaultsFavorite(movies: movies, self)
     }
 }
