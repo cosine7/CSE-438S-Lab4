@@ -30,10 +30,10 @@ struct API {
         return request.url
     }
     // Learned from https://www.hackingwithswift.com/articles/161/how-to-use-result-in-swift
-    static func GET(_ request: URL?, _ completion: @escaping (Result<APIResults, FetchingError>) -> Void) {
+    static func GET<T>(_ request: URL?, _ type: T.Type, _ completion: @escaping (Result<T, FetchingError>) -> Void) where T: Decodable {
         guard let url = request,
               let data = try? Data(contentsOf: url),
-              let response = try? JSONDecoder().decode(APIResults.self, from: data)
+              let response = try? JSONDecoder().decode(type, from: data)
         else {
             completion(.failure(.unKnownError))
             return

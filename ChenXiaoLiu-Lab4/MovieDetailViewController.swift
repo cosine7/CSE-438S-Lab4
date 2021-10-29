@@ -44,10 +44,12 @@ class MovieDetailViewController: UIViewController {
     }
     
     @IBAction func reviewButtonClicked(_ sender: Any) {
-        guard let viewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "ReviewsViewController") as? ReviewsViewController
+        guard let item = movie,
+              let viewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "ReviewsViewController") as? ReviewsViewController
         else {
             return
         }
+        viewController.movieId = item.id
         self.present(viewController, animated: true)
     }
 }

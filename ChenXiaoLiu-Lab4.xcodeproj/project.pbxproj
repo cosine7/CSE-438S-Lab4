@@ -17,6 +17,9 @@
 		5021807B2724BA880044ECFF /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5021807A2724BA880044ECFF /* Movie.swift */; };
 		502180862724EE200044ECFF /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502180842724EE200044ECFF /* CollectionViewCell.swift */; };
 		5021808B272610090044ECFF /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5021808A272610090044ECFF /* MovieDetailViewController.swift */; };
+		504F7258272CB2BD008B87E6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504F7257272CB2BD008B87E6 /* TableViewCell.swift */; };
+		504F725A272CB9D8008B87E6 /* ReviewAPIResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504F7259272CB9D8008B87E6 /* ReviewAPIResults.swift */; };
+		504F725C272CB9F9008B87E6 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504F725B272CB9F9008B87E6 /* Review.swift */; };
 		509FBE74272BBBD6007512DF /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509FBE73272BBBD6007512DF /* ReviewsViewController.swift */; };
 		50CDC72927275B110031E7A4 /* VideoAPIResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDC72827275B110031E7A4 /* VideoAPIResults.swift */; };
 		50CDC72B27275B970031E7A4 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDC72A27275B970031E7A4 /* Video.swift */; };
@@ -42,6 +45,9 @@
 		5021807A2724BA880044ECFF /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		502180842724EE200044ECFF /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		5021808A272610090044ECFF /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		504F7257272CB2BD008B87E6 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		504F7259272CB9D8008B87E6 /* ReviewAPIResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAPIResults.swift; sourceTree = "<group>"; };
+		504F725B272CB9F9008B87E6 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		509FBE73272BBBD6007512DF /* ReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
 		50CDC72827275B110031E7A4 /* VideoAPIResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoAPIResults.swift; sourceTree = "<group>"; };
 		50CDC72A27275B970031E7A4 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
@@ -68,6 +74,7 @@
 		502180582724A7820044ECFF = {
 			isa = PBXGroup;
 			children = (
+				504F7256272CB262008B87E6 /* TableViewComponents */,
 				50CDC736272916FE0031E7A4 /* CollectionViewComponents */,
 				50CDC7332727A1EF0031E7A4 /* Utility */,
 				50CDC72C27276C0E0031E7A4 /* DataModel */,
@@ -103,6 +110,14 @@
 			path = "ChenXiaoLiu-Lab4";
 			sourceTree = "<group>";
 		};
+		504F7256272CB262008B87E6 /* TableViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				504F7257272CB2BD008B87E6 /* TableViewCell.swift */,
+			);
+			path = TableViewComponents;
+			sourceTree = "<group>";
+		};
 		50CDC72C27276C0E0031E7A4 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +126,8 @@
 				502180782724BA640044ECFF /* APIResults.swift */,
 				5021807A2724BA880044ECFF /* Movie.swift */,
 				50CDC73D2729E0460031E7A4 /* FetchingError.swift */,
+				504F7259272CB9D8008B87E6 /* ReviewAPIResults.swift */,
+				504F725B272CB9F9008B87E6 /* Review.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -206,11 +223,14 @@
 				502180692724A7820044ECFF /* ViewController.swift in Sources */,
 				502180652724A7820044ECFF /* AppDelegate.swift in Sources */,
 				50CDC72927275B110031E7A4 /* VideoAPIResults.swift in Sources */,
+				504F7258272CB2BD008B87E6 /* TableViewCell.swift in Sources */,
 				50D6AC232727419C005D10B3 /* VideoViewController.swift in Sources */,
+				504F725C272CB9F9008B87E6 /* Review.swift in Sources */,
 				502180862724EE200044ECFF /* CollectionViewCell.swift in Sources */,
 				502180672724A7820044ECFF /* SceneDelegate.swift in Sources */,
 				50CDC72E272774D60031E7A4 /* FavoritesViewController.swift in Sources */,
 				50CDC742272A4FE00031E7A4 /* TrendingViewController.swift in Sources */,
+				504F725A272CB9D8008B87E6 /* ReviewAPIResults.swift in Sources */,
 				5021808B272610090044ECFF /* MovieDetailViewController.swift in Sources */,
 				50CDC7322727816C0031E7A4 /* Utility.swift in Sources */,
 				502180792724BA640044ECFF /* APIResults.swift in Sources */,

@@ -26,7 +26,7 @@ class TrendingViewController: UIViewController, UICollectionViewDelegate, UIColl
         spinner.center = view.center
         spinner.startAnimating()
         DispatchQueue.global().async {
-            API.GET(API.weeklyTrendsRequest) {
+            API.GET(API.weeklyTrendsRequest, APIResults.self) {
                 result in
                 switch result {
                 case .success(let apiResult):
@@ -36,7 +36,7 @@ class TrendingViewController: UIViewController, UICollectionViewDelegate, UIColl
                     break
                 }
             }
-            API.GET(API.dailyTrendsRequest) {
+            API.GET(API.dailyTrendsRequest, APIResults.self) {
                 result in
                 switch result {
                 case .success(let apiResult):
