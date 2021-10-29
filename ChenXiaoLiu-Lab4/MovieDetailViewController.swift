@@ -42,4 +42,12 @@ class MovieDetailViewController: UIViewController {
         guard let item = movie else { return }
         Utility.addToFavorite(item, self)
     }
+    
+    @IBAction func reviewButtonClicked(_ sender: Any) {
+        guard let viewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "ReviewsViewController") as? ReviewsViewController
+        else {
+            return
+        }
+        self.present(viewController, animated: true)
+    }
 }
