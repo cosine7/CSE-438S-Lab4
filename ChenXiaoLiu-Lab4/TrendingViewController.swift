@@ -87,4 +87,24 @@ class TrendingViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         Utility.pushMovieDetailViewController(self, movie, poster)
     }
+    
+    // Learned from https://www.youtube.com/watch?v=a1Agazw2JxM
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let movie = collectionView == weeklyTrendsCollectionView
+            ? weelyMovies[indexPath.item]
+            : dailyMovies[indexPath.item]
+        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+            let addTofavorite = UIAction(
+                title: "Add To Favorites",
+                image: UIImage(named: "favorite")
+            ) { _ in
+                Utility.addToFavorite(movie, self)
+            }
+            return UIMenu(
+                title: movie.title,
+                children: [addTofavorite]
+            )
+        }
+        return configuration
+    }
 }

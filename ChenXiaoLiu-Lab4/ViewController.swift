@@ -66,7 +66,9 @@ class ViewController: UIViewController, UISearchBarDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // Learned from https://www.youtube.com/watch?v=eWGu3hcL3ww
         let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath)
-        guard let cell = collectionCell as? CollectionViewCell
+        guard indexPath.item < movies.count,
+              indexPath.item < posterCache.count,
+              let cell = collectionCell as? CollectionViewCell
         else {
             return collectionCell
         }
